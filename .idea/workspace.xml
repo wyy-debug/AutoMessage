@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="3161b88c-d1b0-49c8-beb2-c62b0601c46d" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.flaskenv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/AutoMessage.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/AutoMessage.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/autosms/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/autosms/routes.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/utils/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/utils/log.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/utils/responses.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/config.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pyvenv.cfg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vue-automessage/.env.development" beforeDir="false" afterPath="$PROJECT_DIR$/vue-automessage/.env.development" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vue-automessage/.env.production" beforeDir="false" afterPath="$PROJECT_DIR$/vue-automessage/.env.production" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vue-automessage/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/vue-automessage/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vue-automessage/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/vue-automessage/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vue-automessage/src/api/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/vue-automessage/src/api/user.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vue-automessage/src/components/Breadcrumb/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/vue-automessage/src/components/Breadcrumb/index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vue-automessage/src/permission.js" beforeDir="false" afterPath="$PROJECT_DIR$/vue-automessage/src/permission.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vue-automessage/src/router/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/vue-automessage/src/router/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vue-automessage/src/store/modules/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/vue-automessage/src/store/modules/user.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vue-automessage/src/utils/request.js" beforeDir="false" afterPath="$PROJECT_DIR$/vue-automessage/src/utils/request.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vue-automessage/src/views/dashboard/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/vue-automessage/src/views/dashboard/index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vue-automessage/src/views/login/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/vue-automessage/src/views/login/index.vue" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/vue-automessage" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2DhCVuxtJBtOIuHnAn51sgsHsMv" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/Users/youchuankui/Desktop/AutoMessage",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="3161b88c-d1b0-49c8-beb2-c62b0601c46d" name="Changes" comment="" />
+      <created>1661141956528</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1661141956528</updated>
+      <workItem from="1661141957743" duration="237000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
