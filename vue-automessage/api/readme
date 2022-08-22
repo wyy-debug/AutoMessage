@@ -1,0 +1,41 @@
+$(venv) flask db init  # 初始化操作
+$(venv) flask db migrate # 数据库迁移操作
+$(venv) flask db upgrade # 数据模型升级操作
+
+
+init.py
+日志、
+数据库迁移、
+跨域、
+blueprint，
+还有我们编写的 author、books 接口都注册在这里。
+后续如果有新用到的 Flask 扩展，新开发的接口，都需要来这里进行注册操作。
+模型设计
+Project
+  id name versions
+  接口 增加 删除 查询 修改？
+Version
+  id name project_id bulletin_board
+  接口 增加 查询
+Bulletin_board
+  id type version_id questions
+Question
+  id data bulletin_board_id
+
+
+前端vue开发流程
+src/views 新建文件夹
+在src/router/index.js constantRoutes数组里添加
+在src/api 下兴建js
+import request from '@/utils/request'
+
+// 添加作者信息
+export function createAuthorInfo(data) {
+  return request({
+    url: "/author/",
+    method: 'post',
+    data
+  })
+}
+
+
