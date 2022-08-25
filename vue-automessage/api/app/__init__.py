@@ -38,14 +38,12 @@ def register_blueprints(app):
     from app.users import users_bp
     app.register_blueprint(users_bp, url_prefix='/api/users')
 
-    from app.project import project_bp
-    app.register_blueprint(project_bp, url_prefix='/api/project')
+    from app.device import device_bp
+    app.register_blueprint(device_bp, url_prefix='/api/device')
 
-    from app.version import version_bp
-    app.register_blueprint(version_bp, url_prefix='/api/version')
+    from app.message import message_bp
+    app.register_blueprint(message_bp, url_prefix='/api/message')
 
-    from app.questions import questions_bp
-    app.register_blueprint(questions_bp, url_prefix='/api/questions')
 
     swaggerui_blueprint = get_swaggerui_blueprint('/api/docs', '/api/spec', config={'app_name': 'Flask API Docs'})
     app.register_blueprint(swaggerui_blueprint, url_prefix='/api/docs')

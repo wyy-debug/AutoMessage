@@ -39,3 +39,11 @@ export function createAuthorInfo(data) {
 }
 
 
+短信收发平台设计
+1.登录账号中心设计
+2.短信入库
+短信库设计
+ID devices_id msg time revice_from_number
+手机库设计
+ID devices_id number
+

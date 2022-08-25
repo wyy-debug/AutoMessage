@@ -9,7 +9,7 @@ app = create_app()
 def spec():
     swag = swagger(app,prefix='/api')
     swag['info']['base'] = "http://locahost:5000"
-    swag['info']['version'] = "1.0"
+    swag['info']['message'] = "1.0"
     swag['info']['title'] = 'Flask API Docs'
     return jsonify(swag)
 
