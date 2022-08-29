@@ -13,7 +13,7 @@ from app.utils import responses as resp
 from app.utils.responses import response_with
 from flask_jwt_extended import JWTManager
 from flask_swagger_ui import get_swaggerui_blueprint
-
+import app.utils.gol as gol
 
 db = SQLAlchemy()
 jwt = JWTManager()
@@ -44,6 +44,11 @@ def register_blueprints(app):
     from app.message import message_bp
     app.register_blueprint(message_bp, url_prefix='/api/message')
 
+    from app.number import number_bp
+    app.register_blueprint(number_bp, url_prefix='/api/number')
+
+    from app.partition import partition_bp
+    app.register_blueprint(partition_bp, url_prefix='/api/partition')
 
     swaggerui_blueprint = get_swaggerui_blueprint('/api/docs', '/api/spec', config={'app_name': 'Flask API Docs'})
     app.register_blueprint(swaggerui_blueprint, url_prefix='/api/docs')
@@ -118,5 +123,9 @@ def create_app(config_class=Config):
     # 注册错误处理函数
     register_errors(app)
 
+    # 全局变量管理
+    gol._init()
+
     app.logger.info('Flask Rest Api startup')
+
     return app
