@@ -14,6 +14,7 @@ from app.utils.responses import response_with
 from flask_jwt_extended import JWTManager
 from flask_swagger_ui import get_swaggerui_blueprint
 import app.utils.gol as gol
+from app.utils.poco_device import poco_device
 
 db = SQLAlchemy()
 jwt = JWTManager()
@@ -125,6 +126,11 @@ def create_app(config_class=Config):
 
     # 全局变量管理
     gol._init()
+    gol.set_value("phone_state", "free")
+    gol.set_value("phone_part", "null")
+    gol.set_value("phone_sim", "null")
+    gol.set_value("phone_number", "null")
+    # gol.set_value("phone_poco", poco_device())
 
     app.logger.info('Flask Rest Api startup')
 

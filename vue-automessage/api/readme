@@ -47,3 +47,10 @@ ID devices_id msg time revice_from_number
 手机库设计
 ID devices_id number
 
+接口实现
+1.新增设备 device不让新增
+-增加新区
+-增加新账号
+2.设备在线情况
+3.保存转发短信 gol[number] -> numbers.id  message(numbers.id)
+4.查询数据库短信 增加字段用于展示

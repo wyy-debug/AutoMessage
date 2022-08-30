@@ -5,6 +5,7 @@ from app.device.models import Device
 from app.device.schema import DeviceSchema
 from app.utils.responses import response_with
 from app.utils import responses as resp
+import app.utils.gol as gol
 from app.partition.models import Partition
 from app.partition.schema import PartitionSchema
 from flask_jwt_extended import jwt_required
@@ -39,13 +40,24 @@ def get_devices():
   devices = device_schema.dump(fetched)
   return response_with(resp.SUCCESS_200, value={"options": options})
 
-# 切号
+# 切卡
 @device_bp.route('/changedevices/',methods=['POST'])
 def change_devices():
   try:
+    gol.set_value("phone_state", "busy")
     data = request.get_json()
-    print(data)
+    # 处理data
+    # part = '1区'
+    # sim = '1'
+    # phone_number = '1xxxxxxxx'
+    # phone_poco = gol.get_value("phone_poco")
+    #
+    # if(phone_poco.change_call(part='1区',sim='1')):
+    #   gol.set_value("phone_part", part)
+    #   gol.set_value("phone_sim", sim)
+    #   gol.set_value("phone_number", phone_number)
+    #
+    # gol.set_value("phone_state", "free")
     return response_with(resp.SUCCESS_200)
   except Exception as e:
-    print(e)
-    pass
+    gol.set_value("phone_state", "free")
