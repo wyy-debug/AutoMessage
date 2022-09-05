@@ -1,7 +1,7 @@
 <template>
   <div class="dashboard-container">
-    <el-tag>当前选择卡</el-tag>
-    <el-tag type="success">设备是否繁忙</el-tag>
+    <el-tag :data="phone_now">当前选择卡 {{phone_now}}</el-tag>
+    <el-tag type="success" :data="phone_state">设备是否繁忙 {{phone_state}}</el-tag>
     <div class="block">
       <span class="demonstration">选择切卡</span>
       <el-cascader
@@ -16,26 +16,14 @@
       stripe
       style="width: 100%">
       <el-table-column
-        prop="date"
-        label="设备"
+        prop="recv_from_number"
+        label="号码"
         width="180">
       </el-table-column>
       <el-table-column
-        prop="name"
-        label="分区"
-        width="180">
-      </el-table-column>
-      <el-table-column
-        prop="address"
-        label="分号">
-      </el-table-column>
-      <el-table-column
-        prop="phone_number"
-        label="手机号码">
-      </el-table-column>
-      <el-table-column
-        prop="message"
-        label="信息">
+        prop="message_text"
+        label="信息"
+        width="900">
       </el-table-column>
     </el-table>
   </div>
@@ -43,7 +31,7 @@
 
 <script>
 
-import { ChangeDevices, getDevicesInfo } from '@/api/devices'
+import { ChangeDevices, getDeviceInfo, getDevicesInfo, getMessagesInfo } from '@/api/devices'
 
 export default {
   mobile: '123',
@@ -52,36 +40,50 @@ export default {
   components: { },
   data() {
     return {
-      tableData: [{
-        date: '荣耀 V10',
-        name: '分区1',
-        address: 'SIM1',
-        phone_number: '13333333333',
-        message: 'test11111'
-      }, {
-        date: '荣耀 V10',
-        name: '分区1',
-        address: 'SIM1',
-        phone_number: '13333333333',
-        message: 'test11111'
-      }, {
-        date: '荣耀 V10',
-        name: '分区1',
-        address: 'SIM1',
-        phone_number: '13333333333',
-        message: 'test11111'
-      }, {
-        date: '荣耀 V10',
-        name: '分区1',
-        address: 'SIM1',
-        phone_number: '13333333333',
-        message: 'test11111'
-      }],
+      phone_state: '忙碌',
+      phone_now: '无',
+      tableData: [],
       value: [],
       options: []
     }
   },
+  created() {
+    setInterval(() => {
+      this.getMessageList()
+      this.getDevicesState()
+    }, 1000 * 5)
+  },
   methods: {
+    getMessageList() {
+      getMessagesInfo()
+        .then(res => {
+          if (res.code === 'success') {
+            this.tableData = res.messages
+          } else {
+            this.$message.error('获取信息失败')
+          }
+        })
+        .catch(err => {
+          console.log(err)
+          this.$message.error('服务端异常，请联系管理员解决。')
+        })
+    },
+    getDevicesState() {
+      getDeviceInfo()
+        .then(res => {
+          if (res.code === 'success') {
+            this.phone_state = res.data['phone_state']
+            this.phone_now = res.data['phone_now']
+          } else {
+            this.$message.error('获取信息失败')
+          }
+        })
+        .catch(err => {
+          console.log(err)
+          this.$message.error('服务端异常，请联系管理员解决。')
+        })
+
+    },
     getDevicesList() {
       getDevicesInfo()
         .then(res => {
@@ -98,11 +100,24 @@ export default {
     },
     save() {
       var devices_json = { devices_name: this.value[0], partition: this.value[1], phone_type: this.value[2], phone_number: this.value[3] }
-      ChangeDevices(devices_json)
+      ChangeDevices(devices_json).then(res => {
+        if (res.code === 'success') {
+          this.phone_state = res.data['phone_state']
+          this.phone_now = res.data['phone_now']
+        } else {
+          this.$message.error('切卡失败')
+        }
+      })
+        .catch(err => {
+          console.log(err)
+          this.$message.error('切卡失败')
+        })
     }
   },
   mounted() {
     this.getDevicesList()
+    this.getMessageList()
+    this.getDevicesState()
   },
   computed: {
   }

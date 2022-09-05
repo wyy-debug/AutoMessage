@@ -14,3 +14,17 @@ export function ChangeDevices(data) {
     data
   })
 }
+
+export function getMessagesInfo() {
+  return request({
+    url: '/message/',
+    method: 'get'
+  })
+}
+
+export function getDeviceInfo() {
+  return request({
+    url: '/device/devicesstate/',
+    method: 'get'
+  })
+}

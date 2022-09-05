@@ -129,8 +129,8 @@ def create_app(config_class=Config):
     gol.set_value("phone_state", "free")
     gol.set_value("phone_part", "null")
     gol.set_value("phone_sim", "null")
-    gol.set_value("phone_number", "null")
-    # gol.set_value("phone_poco", poco_device())
+    gol.set_value("phone_number", 13313331333)
+    gol.set_value("phone_poco", poco_device())
 
     app.logger.info('Flask Rest Api startup')
 

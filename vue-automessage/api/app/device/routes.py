@@ -44,20 +44,28 @@ def get_devices():
 @device_bp.route('/changedevices/',methods=['POST'])
 def change_devices():
   try:
-    gol.set_value("phone_state", "busy")
+    gol.set_value("phone_state", "忙碌")
     data = request.get_json()
-    # 处理data
-    # part = '1区'
-    # sim = '1'
-    # phone_number = '1xxxxxxxx'
-    # phone_poco = gol.get_value("phone_poco")
-    #
-    # if(phone_poco.change_call(part='1区',sim='1')):
-    #   gol.set_value("phone_part", part)
-    #   gol.set_value("phone_sim", sim)
-    #   gol.set_value("phone_number", phone_number)
-    #
-    # gol.set_value("phone_state", "free")
-    return response_with(resp.SUCCESS_200)
+    part = data["partition"]
+    sim = data["phone_type"]
+    phone_number = data["phone_number"]
+    phone_poco = gol.get_value("phone_poco")
+
+    if(phone_poco.change_call(part='1区',sim='1')):
+      gol.set_value("phone_part", part)
+      gol.set_value("phone_sim", sim)
+      gol.set_value("phone_number", phone_number)
+
+    gol.set_value("phone_state", "空闲")
+    data = {"phone_state": "空闲","phone_now":str(data["phone_number"])}
+    return response_with(resp.SUCCESS_200, value={"data": data})
   except Exception as e:
-    gol.set_value("phone_state", "free")
+    gol.set_value("phone_state", "空闲")
+    return response_with(resp.SERVER_ERROR_500)
+
+@device_bp.route('/devicesstate/',methods=['GET'])
+def get_state():
+  state = gol.get_value("phone_state")
+  number = str(gol.get_value("phone_number"))
+  data = {"phone_state": state, "phone_now": number}
+  return response_with(resp.SUCCESS_200, value={"data": data})

@@ -13,7 +13,7 @@ class MessageSchema(app.marshmallow.SQLAlchemyAutoSchema):
         load_instance = True
 
     id = fields.Number(dump_only=True)
-    recv_from_number = fields.Integer(dump_only=True)
-    message_text = fields.String(dump_only=True)
-    recv_time = fields.DateTime(dump_only=True)
-    numbers_id = fields.Integer(dump_only=True)
+    recv_from_number = fields.Integer(required=True)
+    message_text = fields.String(required=True)
+    recv_time = fields.DateTime(required=False)
+    numbers_id = fields.Integer(dump_only=False)
