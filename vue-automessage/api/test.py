@@ -1,9 +1,9 @@
 class Devices:
-    def __init___(self,device_id,device_name,device_number):
+    def __init___(self, device_id, device_name, device_number):
         self.device_id = device_id,
-        self.device_name = device_name  
+        self.device_name = device_name
         self.device_number = device_number
-    
+
     def add_devices(self):
         pass
 
@@ -22,7 +22,7 @@ class DeviceRelationNumber:
         self.id = id
         self.device_id = device_id
         self.number_id = number_id
-    
+
     def add_devices_relation_number(self):
         pass
 
@@ -45,7 +45,7 @@ class Numbers:
         self.number_parition = number_partition
         self.number_semicolon = number_semicolon
         self.number_phone = number_phone
-    
+
     def add_numbers(self):
         DeviceRelationNumber.add_devices_relation_number()
         pass
@@ -67,7 +67,7 @@ class NumbeRelationMessage:
         self.id = id
         self.number_id = number_id
         self.message_id = message_id
-    
+
     def add_number_relation_message(self):
         pass
 
@@ -83,7 +83,7 @@ class NumbeRelationMessage:
     def del_number_id(self):
         pass
 
-    
+
 class Messages:
     def __init__(self,message_id,creat_time):
         self.message_id = message_id

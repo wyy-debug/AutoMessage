@@ -6,11 +6,12 @@ from app.device.schema import DeviceSchema
 from app.utils.responses import response_with
 from app.utils import responses as resp
 import app.utils.gol as gol
+from app.devicerelationnumber.models import DeviceRelationNumber
 from flask_jwt_extended import jwt_required
 
-# 创建手机
+# 增加手机设备
 @device_bp.route('/',methods=['POST'])
-def create_device():
+def add_device():
     try:
         data = request.get_json()
         device_schema = DeviceSchema()
@@ -24,19 +25,33 @@ def create_device():
 
 # 获取手机列表
 @device_bp.route('/',methods=['GET'])
-def get_devices():
-  options = []
+def get_device():
   fetched = Device.query.all()
-  for i in fetched:
-    options.append({"value":i.devices_name, "label":i.devices_name, "children":[]})
-    for j in i.partition:
-      options[-1]["children"].append({"value":j.partition, "label":j.partition, "children":[]})
-      for z in j.number:
-        options[-1]["children"][-1]["children"].append({"value":z.number_type, "label":z.number_type, "children":[{"value":z.number, "label":z.number}]})
-
-  device_schema = DeviceSchema(many=True, only=['id', 'devices_name'])
+  device_schema = DeviceSchema(many=True, only=['id', 'device_name', 'device_number'])
   devices = device_schema.dump(fetched)
-  return response_with(resp.SUCCESS_200, value={"options": options})
+  return response_with(resp.SUCCESS_200, value={"devices": devices})
+
+# 更新手机信息
+@device_bp.route('/<int:id>',methods=[''])
+def update_device():
+  data = request.get_json()
+  get_device = Device.query.get_or_404(id)
+  get_device.device_name = data['device_name']
+  get_device.device_number = data['device_number']
+  db.session.add(get_device)
+  db.session.commit()
+  device_schema = DeviceSchema()
+  device = device_schema.dump(get_device)
+  return response_with(resp.SUCCESS_200, value={"device": device})
+
+# 删除手机
+@device_bp.route('/<int:id>',methods=['DELETE'])
+def delete_device(id):
+  get_device = Device.query.get_or_404(id)
+  db.session.delete(get_device)
+  db.session.commit()
+  DeviceRelationNumber.delete_number_id(id)
+  return response_with(resp.SUCCESS_204)
 
 # 切卡
 @device_bp.route('/changedevices/',methods=['POST'])
