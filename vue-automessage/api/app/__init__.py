@@ -48,8 +48,11 @@ def register_blueprints(app):
     from app.number import number_bp
     app.register_blueprint(number_bp, url_prefix='/api/number')
 
-    from app.partition import partition_bp
-    app.register_blueprint(partition_bp, url_prefix='/api/partition')
+    from app.devicerelationnumber import devicerelationnumber_bp
+    app.register_blueprint(devicerelationnumber_bp, url_prefix='/api/devicerelationnumber')
+
+    from app.numberrelationmessage import numberrelationmessage_bp
+    app.register_blueprint(numberrelationmessage_bp, url_prefix='/api/numberrelationmessage')
 
     swaggerui_blueprint = get_swaggerui_blueprint('/api/docs', '/api/spec', config={'app_name': 'Flask API Docs'})
     app.register_blueprint(swaggerui_blueprint, url_prefix='/api/docs')

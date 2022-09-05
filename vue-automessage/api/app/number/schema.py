@@ -13,6 +13,6 @@ class NumberSchema(app.marshmallow.SQLAlchemyAutoSchema):
         load_instance = True
 
     id = fields.Number(dump_only=True)
-    number = fields.Integer(required=True)
-    partition_id = fields.Integer(dump_only=True)
-    messages = fields.Nested(Message, many=True, only=['id', 'recv_from_number', 'message_text', 'recv_time', 'devices_id'])
+    number_parition = fields.String(required=True)
+    number_semicolon = fields.String(required=True)
+    number_phone = fields.Integer(required=True)

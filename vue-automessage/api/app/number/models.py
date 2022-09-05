@@ -4,15 +4,17 @@ class Number(db.Model):
     __tablename__ = 'numbers'
 
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    number_type = db.Column(db.String(20))
-    number = db.Column(db.Integer)
-    partition_id = db.Column(db.Integer, db.ForeignKey('partitions.id'))
-    messages = db.relationship('Message', backref='Number', cascade="all, delete-orphan")
+    # 分区
+    number_parition = db.Column(db.String(20))
+    # 分号
+    number_semicolon = db.Column(db.String(20))
+    # 手机号码
+    number_phone = db.Column(db.Integer)
 
-    def __init__(self, number, message=[], partition_id=None):
-      self.number = number
-      self.messages = message
-      self.partition_id = partition_id
+    def __init__(self, number_parition, number_semicolon, number_phone):
+      self.number_parition = number_parition
+      self.number_semicolon = number_semicolon
+      self.number_phone = number_phone
 
     def create(self):
       db.session.add(self)

@@ -6,8 +6,6 @@ from app.device.schema import DeviceSchema
 from app.utils.responses import response_with
 from app.utils import responses as resp
 import app.utils.gol as gol
-from app.partition.models import Partition
-from app.partition.schema import PartitionSchema
 from flask_jwt_extended import jwt_required
 
 # 创建手机
