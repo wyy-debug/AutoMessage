@@ -11,7 +11,7 @@ from flask_jwt_extended import jwt_required
 
 # 创建手机
 @number_bp.route('/<int:device_id>',methods=['POST'])
-def create_number(device_id):
+def add_number(device_id):
     try:
         data = request.get_json()
         number_schema = NumberSchema()

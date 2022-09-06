@@ -5,11 +5,9 @@ class Message(db.Model):
 
     id = db.Column(db.Integer,primary_key=True,autoincrement=True)
     message_text = db.Column(db.String(500))
-    creat_time = db.Column(db.DateTime)
 
-    def __init__(self, message_text, creat_time):
+    def __init__(self, message_text):
         self.message_text = message_text
-        self.creat_time = creat_time
 
     def create(self):
         db.session.add(self)

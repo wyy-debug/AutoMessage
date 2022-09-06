@@ -15,12 +15,14 @@ from flask_jwt_extended import JWTManager
 from flask_swagger_ui import get_swaggerui_blueprint
 import app.utils.gol as gol
 from app.utils.poco_device import poco_device
+from app.utils.device_manager import DeviceManager
 
 db = SQLAlchemy()
 jwt = JWTManager()
 cors = CORS()
 migrate = Migrate()
 marshmallow = Marshmallow()
+devicemanager = DeviceManager()
 
 
 
@@ -133,6 +135,7 @@ def create_app(config_class=Config):
     gol.set_value("phone_part", "null")
     gol.set_value("phone_sim", "null")
     gol.set_value("phone_number", "null")
+    gol.set_value("devicemanager", devicemanager)
     # gol.set_value("phone_poco", poco_device())
 
     app.logger.info('Flask Rest Api startup')
