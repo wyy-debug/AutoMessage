@@ -32,7 +32,7 @@ def get_device():
   return response_with(resp.SUCCESS_200, value={"devices": devices})
 
 # 更新手机信息
-@device_bp.route('/<int:id>',methods=[''])
+@device_bp.route('/<int:id>',methods=['PUT'])
 def update_device():
   data = request.get_json()
   get_device = Device.query.get_or_404(id)
