@@ -23,14 +23,19 @@ class Poco:
         self.poco("android:id/list").swipe([0, -0.3])
         sleep(1.0)
         self.poco(text=part + "换号").click()
-      sleep(4.0)
+      if self.poco(text="*SIM-" + sim).exists():
+        self.poco("android:id/up").click()
+        return True
       if self.poco(text=" SIM-" + sim).exists():
         self.poco(text=" SIM-" + sim).click()
       else:
         self.poco("android:id/list").swipe([0, -0.3])
         sleep(1.0)
+        if self.poco(text="*SIM-" + sim).exists():
+          self.poco("android:id/up").click()
+          return True
         self.poco(text=" SIM-" + sim).click()
-      sleep(4.0)
+      sleep(10)
       if self.poco(text="SIM 卡应用1").exists():
         self.poco(text="SIM 卡应用1").click()
       if self.poco(text=part + "换号").exists():
