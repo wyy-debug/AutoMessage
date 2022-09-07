@@ -1,3 +1,5 @@
+import json
+
 import requests
 class HttpHandle:
     # 接口初始化
@@ -6,7 +8,7 @@ class HttpHandle:
 
     def get(self, url):
         r = requests.get(url)
-        return r.content
+        return r.content.decode('UTF-8')
 
     def post(self, url, postdata):
         p = requests.post(url, data=postdata)

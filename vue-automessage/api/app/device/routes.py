@@ -1,3 +1,5 @@
+import json
+
 from flask import request
 from app import db
 from app.device import device_bp
@@ -13,9 +15,10 @@ from flask_jwt_extended import jwt_required
 @device_bp.route('/',methods=['POST'])
 def add_device():
     try:
-        data = request.get_json()
+        data = request.data.decode('UTF-8')
+        device_data = json.loads(data)
         device_schema = DeviceSchema()
-        device = device_schema.load(data)
+        device = device_schema.load(device_data)
         result = device_schema.dump(device.create())
         return response_with(resp.SUCCESS_201,value={"device":result})
     except Exception as e:

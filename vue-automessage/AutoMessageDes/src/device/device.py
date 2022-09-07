@@ -4,3 +4,4 @@ class Device:
         self.device_id = device_id
         self.device_name = device_name
         self.device_number = device_number
+        self.number_list = []

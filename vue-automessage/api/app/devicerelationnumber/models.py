@@ -25,8 +25,8 @@ class DeviceRelationNumber(db.Model):
 
     @classmethod
     def add_relation(cls, device_id, number_id):
-      data = {"device_id":device_id,"number_id":number_id}
-      db.session.add(data)
+      test = cls(device_id,number_id)
+      db.session.add(test)
       db.session.commit()
 
 

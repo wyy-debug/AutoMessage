@@ -1,3 +1,4 @@
+import json
 from flask import request
 from app import db
 from app.number import number_bp
@@ -13,11 +14,12 @@ from flask_jwt_extended import jwt_required
 @number_bp.route('/<int:device_id>',methods=['POST'])
 def add_number(device_id):
     try:
-        data = request.get_json()
+        data = request.data.decode('UTF-8')
+        number_data = json.loads(data)
         number_schema = NumberSchema()
-        number = number_schema.load(data)
+        number = number_schema.load(number_data)
         result = number_schema.dump(number.create())
-        DeviceRelationNumber.add_relation(device_id, result.id)
+        DeviceRelationNumber.add_relation(device_id, result["id"])
         return response_with(resp.SUCCESS_201,value={"result":result})
     except Exception as e:
         print(e)
