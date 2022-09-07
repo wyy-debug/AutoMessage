@@ -34,4 +34,9 @@ class HttpHandle:
         return self.post("http://127.0.0.1:5000/api/number/",data)
 
     def get_messages(self, device_id):
-        return self.get("http://127.0.0.1:5000/api/number/"+str(device_id))
+        return self.get("http://127.0.0.1:5000/api/message/"+str(device_id))
+
+
+    def changenumber(self, data):
+        return self.post("http://127.0.0.1:5000/api/device/changedevices/", data)
+

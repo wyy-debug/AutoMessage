@@ -9,6 +9,7 @@ from app.utils.responses import response_with
 from app.utils import responses as resp
 import app.utils.gol as gol
 from app.devicerelationnumber.models import DeviceRelationNumber
+from app.utils.poco_device import Poco
 from flask_jwt_extended import jwt_required
 
 # 增加手机设备
@@ -60,20 +61,15 @@ def delete_device(id):
 @device_bp.route('/changedevices/',methods=['POST'])
 def change_devices():
   try:
-    gol.set_value("phone_state", "busy")
-    data = request.get_json()
-    # 处理data
-    # part = '1区'
-    # sim = '1'
-    # phone_number = '1xxxxxxxx'
-    # phone_poco = gol.get_value("phone_poco")
-    #
-    # if(phone_poco.change_call(part='1区',sim='1')):
-    #   gol.set_value("phone_part", part)
-    #   gol.set_value("phone_sim", sim)
-    #   gol.set_value("phone_number", phone_number)
-    #
-    # gol.set_value("phone_state", "free")
-    return response_with(resp.SUCCESS_200)
+    data = request.data.decode('UTF-8')
+    device_data = json.loads(data)
+    device_number = device_data['device_number']
+    phone_part = device_data['number_parition']
+    phone_sim = device_data['number_semicolon']
+    poco_device = Poco(device_number)
+    if(poco_device.change_call(phone_part, phone_sim)):
+      return response_with(resp.SUCCESS_200,value={"mes": "succss"})
+    else:
+      return response_with(resp.SUCCESS_200, value={"mes": "fail"})
   except Exception as e:
     gol.set_value("phone_state", "free")

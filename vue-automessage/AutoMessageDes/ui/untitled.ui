@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>747</width>
-    <height>618</height>
+    <width>1109</width>
+    <height>675</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -60,23 +60,13 @@
      </rect>
     </property>
    </widget>
-   <widget class="QColumnView" name="columnView">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>370</y>
-      <width>721</width>
-      <height>192</height>
-     </rect>
-    </property>
-   </widget>
    <widget class="QTreeWidget" name="treeWidget">
     <property name="geometry">
      <rect>
       <x>10</x>
       <y>40</y>
-      <width>721</width>
-      <height>291</height>
+      <width>1081</width>
+      <height>301</height>
      </rect>
     </property>
     <column>
@@ -98,14 +88,37 @@
      <string>查询</string>
     </property>
    </widget>
+   <widget class="QListWidget" name="listWidget">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>350</y>
+      <width>1081</width>
+      <height>221</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="ResButton">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>590</y>
+      <width>75</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>刷新短信</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>747</width>
-     <height>23</height>
+     <width>1109</width>
+     <height>22</height>
     </rect>
    </property>
   </widget>

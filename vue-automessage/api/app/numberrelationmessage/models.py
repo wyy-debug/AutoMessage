@@ -4,7 +4,7 @@ class NumberRelationMessage(db.Model):
     __tablename__ = 'numberrelationmessage'
 
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    number_id = db.Column(db.Integer)
+    device_id = db.Column(db.Integer)
     message_id = db.Column(db.Integer)
 
     def __init__(self, device_id, message_id):
@@ -17,12 +17,12 @@ class NumberRelationMessage(db.Model):
       return self
 
     @classmethod
-    def add_relation(cls, number_id, message_id):
-      data = {"number_id": number_id, "message_id": message_id}
-      db.session.add(data)
+    def add_relation(cls, device_id, message_id):
+      test = cls(device_id, message_id)
+      db.session.add(test)
       db.session.commit()
 
     @classmethod
-    def get_messages_id(cls, number_id):
-      fetched = cls.query.filter(cls.number_id == number_id).all()
+    def get_messages_id(cls, device_id):
+      fetched = cls.query.order_by(cls.id.desc()).filter(cls.device_id == device_id).limit(2)
       return fetched

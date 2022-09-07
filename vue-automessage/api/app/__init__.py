@@ -14,7 +14,6 @@ from app.utils.responses import response_with
 from flask_jwt_extended import JWTManager
 from flask_swagger_ui import get_swaggerui_blueprint
 import app.utils.gol as gol
-from app.utils.poco_device import poco_device
 from app.utils.device_manager import DeviceManager
 
 db = SQLAlchemy()
