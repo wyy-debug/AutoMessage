@@ -5,7 +5,7 @@ from airtest.cli.parser import cli_setup
 class Poco:
 
   def __init__(self,port):
-    auto_setup(__file__, devices=["android:///121.5.154.203:"+ port +"?cap_method=javacap&touch_method=adb", ])
+    auto_setup(__file__, devices=["android:///localhost:"+ port +"?cap_method=javacap&touch_method=adb", ])
     from poco.drivers.android.uiautomation import AndroidUiautomationPoco
     self.poco = AndroidUiautomationPoco(use_airtest_input=True, screenshot_each_action=False)
 
