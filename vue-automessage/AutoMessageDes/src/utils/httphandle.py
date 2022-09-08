@@ -19,24 +19,24 @@ class HttpHandle:
         return p.text
 
     def add_device(self,data):
-        return self.post("http://127.0.0.1:5000/api/device/",data)
+        return self.post("http://121.5.154.203:5000/api/device/",data)
 
     def get_devices(self):
-        return self.get("http://127.0.0.1:5000/api/device/")
+        return self.get("http://121.5.154.203:5000/api/device/")
 
     def add_number(self, data, device_id):
-        return self.post("http://127.0.0.1:5000/api/number/"+str(device_id),data)
+        return self.post("http://121.5.154.203:5000/api/number/"+str(device_id),data)
 
     def get_numbers(self, device_id):
-        return self.get("http://127.0.0.1:5000/api/number/"+str(device_id))
+        return self.get("http://121.5.154.203:5000/api/number/"+str(device_id))
 
     def add_message(self, data):
-        return self.post("http://127.0.0.1:5000/api/number/",data)
+        return self.post("http://121.5.154.203:5000/api/number/",data)
 
     def get_messages(self, device_id):
-        return self.get("http://127.0.0.1:5000/api/message/"+str(device_id))
+        return self.get("http://121.5.154.203:5000/api/message/"+str(device_id))
 
 
     def changenumber(self, data):
-        return self.post("http://127.0.0.1:5000/api/device/changedevices/", data)
+        return self.post("http://121.5.154.203:5000/api/device/changedevices/", data)
 

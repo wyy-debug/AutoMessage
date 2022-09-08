@@ -36,13 +36,16 @@ class Example(QMainWindow):
         device_number = self.Devicemanager.device_dict[device_id].device_number
         data = {'device_number':device_number, 'number_parition': item.text(1), 'number_semicolon': item.text(2)}
         changeres = self.httphandle.changenumber(json.dumps(data))
-        changeres_json = json.loads(changeres)
-        if changeres_json["code"] == "success":
-          if changeres_json["mes"] == "succss":
-            QMessageBox.information(self, "提示", "切号成功")
-          else:
-            QMessageBox.information(self, "提示", "切号失败，请等待一会儿重试")
-        self.getmessage()
+        if("Traceback" not in changeres):
+          changeres_json = json.loads(changeres)
+          if changeres_json["code"] == "success":
+            if changeres_json["mes"] == "succss":
+              QMessageBox.information(self, "提示", "切号成功")
+            else:
+              QMessageBox.information(self, "提示", "切号失败，请等待一会儿重试")
+          self.getmessage()
+        else:
+          QMessageBox.information(self, "提示", "设备不在线")
         # 判断是否切号成功
 
     def getmessage(self):
