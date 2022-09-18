@@ -47,6 +47,12 @@ class Poco:
       if self.poco(text="*SIM-" + sim).exists():
         self.poco("android:id/up").click()
         return True
+      else:
+        self.poco("android:id/list").swipe([0, -0.3])
+        sleep(1.0)
+        if self.poco(text="*SIM-" + sim).exists():
+          self.poco("android:id/up").click()
+          return True
       return False
     except:
       return False
