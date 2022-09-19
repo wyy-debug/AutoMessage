@@ -25,10 +25,16 @@ class MyThread(QThread):
       if changeres_json["code"] == "success":
         if changeres_json["mes"] == "succss":
           self.my_signal.emit("succss")
+          print("success")
         else:
           self.my_signal.emit("error")
+          print("error")
       else:
-        self.my_signal.emit("noline")
+        self.my_signal.emit("error")
+        print("error")
+    else:
+      self.my_signal.emit("noline")
+      print("noline")
 
 
 
@@ -60,7 +66,7 @@ class Example(QMainWindow):
 
 
     def set_change(self,changeres):
-      if changeres == "success":
+      if changeres == "succss":
         QMessageBox.information(self, "提示", "切号成功")
         self.getmessage()
       elif changeres == "error":
